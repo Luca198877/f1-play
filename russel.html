@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Russel</title>
+</head>
+<body>
+    <div class="scheda">
+        <img src="./foto/russel.webp" alt="">
+    </div>
+
+    <div class="quiz">
+        <h2>Sei un vero appassionato di Formula 1?</h2>
+        <p>Rispondi alle domande del nostro quiz per metterti alla prova</p>
+
+        <form action="">
+            <h3>Che numero ha sulla sua vettura?</h3>
+            <input type="text" placeholder="scrivi qui la risposta">
+            <h3>Quante gare ha vinto?</h3>
+            <input type="text" placeholder="scrivi qui la risposta">
+            <h3>Quanti anni aveva al suo esordio?</h3>
+            <input type="text" placeholder="scrivi qui la risposta">
+            <h3>La sua nazionalità?</h3>
+            <input type="text" placeholder="scrivi qui la risposta">
+            <h3>Con quale scuderia gareggia?</h3>
+            <input type="text" placeholder="scrivi qui la risposta"><br>
+
+            <div class="bottoni">
+                <button type="button">Gioca</button>
+                <a href="index.html" class="rosso">Torna Indietro</a>
+            </div>
+            
+        </form>
+
+
+    </div>
+    <div class="risultato">
+
+    </div>
+    <script>
+        let campi = document.querySelectorAll("input")
+        let btn = document.querySelector("button")
+        let risultato =document.querySelector(".risultato")
+        let foto = document.querySelector(".scheda img")
+
+        foto.addEventListener('mouseover',()=>{
+           var nuovaFoto = setTimeout(function(){
+            foto.src ="./foto/helmet-russel.jpg"
+           },2000)
+        })
+
+        foto.addEventListener('mouseleave',()=>{
+            foto.src="./foto/russel.webp"
+        })
+
+        btn.addEventListener('click',()=>{
+            
+            var rispostaEsatta = 0
+            var rispostaErrata = 0
+             campi.forEach(campo=>{
+                
+                
+                if(campo.value == ""){
+                    
+                    alert("Riempi tutti i campi")
+                    return
+                    
+                    
+                }
+            })
+ 
+            if (campi[0].value !== "63") {
+        rispostaErrata++;
+    } else {
+        rispostaEsatta++;
+    }
+
+    if (campi[1].value !== "1") {
+        rispostaErrata++;
+    } else {
+        rispostaEsatta++;
+    }
+
+    if (campi[2].value !== "18") {
+        rispostaErrata++;
+    } else {
+        rispostaEsatta++;
+    }
+
+    if (campi[3].value === "Inglese" |campi[3].value === "inglese" ) {
+        rispostaEsatta++;
+    } else {
+        rispostaErrata++;
+    }
+
+    if (campi[4].value === "Mercedes" | campi[4].value === "mercedes") {
+        rispostaEsatta++;
+    }
+   
+     else {
+        rispostaErrata++;
+    }
+    if(rispostaEsatta > rispostaErrata){
+        alert("Complimenti,sei un grande appassionato")
+        risultato.style.backgroundColor= "green"
+    }
+    else {
+        alert("Ci dispiace,ma non sei un vero appassionato")
+        risultato.style.backgroundColor= "red"
+    }
+
+    risultato.innerHTML = `Risposte corrette: ${rispostaEsatta} - Risposte errate: ${rispostaErrata}`;
+            
+
+        })
+    </script>
+</body>
+</html>
